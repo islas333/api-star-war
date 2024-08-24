@@ -16,7 +16,16 @@
 - Docker
 - Docker Compose
 
-## Instalación
+# Rutas de API
+
+| endpoint | Descripcion |
+|----------|----------|
+| /login  | Hacer login de para obtener el token  |
+| /people   | Lista de todos los personajes de la pagina 1  |
+| /search   | Buscar personajes: [ Nombre - Color de Cabello - Planeta de origen - Genero ] |
+
+
+# Ejecutar en local
 
 1. Clona el repositorio:
 
@@ -31,30 +40,36 @@
     npm install
     ```
 
+3. Correr ambiente de Desarrollo:
 
-## Ejecutar con Docker
+    ```sh
+    npm run dev
+    ```
+
+# Ejecutar con Docker
 
 1. Construye la imagen de Docker:
 
   ```sh
-  docker build -t api-star-war .
+  docker build . -t node-api-star-war:latest
   ```
 
-1. Ejecuta el contenedor:
+2. Ejecuta el contenedor en modo dev:
 
   ```sh
-  docker run -p 3005:3002 api-star-war
+  docker run -d -p 3002:3002 \
+  -v "{ruta_local}:/usr/src/app" \
+  --name mi-api-ts node-api-star-war npm run dev
+  ```
+
+3. Ejecuta el contenedor en modo produccion:
+
+  ```sh
+  docker run -d -p 3002:3002 \
+  -v "{ruta_local}:/usr/src/app" \
+  --name mi-api-ts node-api-star-war npm run start
   ```
 
 La API estará disponible en http://localhost:3002
 
-## Uso
-
-### Ejecutar en Local
-
-Para ejecutar la API en tu máquina local:
-
-  ```sh
-  npm start
-  ```
-### Humberto Islas
+### HIR 2024
