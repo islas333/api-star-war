@@ -57,3 +57,4 @@ Para ejecutar la API en tu máquina local:
   ```sh
   npm start
   ```
+### Humberto Islas
